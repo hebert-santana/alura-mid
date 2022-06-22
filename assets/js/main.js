@@ -1,28 +1,40 @@
 function playSom (idElementoAudio) {
-    document.querySelector(idElementoAudio).play();
+    const elemento = document.querySelector(idElementoAudio).play();
+
+    if (elemento != null && elemento.localName === 'audio') {
+       elemento.play();
+    } else {
+        console.log('Elemento não encontrado ou seletor inválido')
+    }
 }
 
 const listaDeTeclas = document.querySelectorAll('.tecla');
-let contador = 0;
 
-// enquanto
-while (contador < listaDeTeclas.length) {
+// para (enquanto a condição for verdadeira, execute)
+// incrementar um valor de variável com contador++
+for (let contador = 0; contador < listaDeTeclas.length; contador++) {
 
     const tecla = listaDeTeclas[contador];
-// o class é um atributo do elemento; em listaDeTeclas[0].classList temos umas lista com 2 elementos; o index 0 = tecla (classe) e o index 1 = tecla_pom (classe); então apara acessar a segunda classe dessa lista, usamos classList[1]
-    const instrumento = tecla.classList[1];
-// Recurso - template string
-// o idAudio vai receber nossa string que vai ter uma parte dinâmica, por isso usamos a crase, a variável entres chaves e $ antes das chaves para fazer uma abertura dentro do JS
-    const idAudio = `#som_${instrumento}`;
+    const instrumento = tecla.classList[1]; // acessar as classes de um elemento com classList
+    const idAudio = `#som_${instrumento}`; // template string para criar textos dinâmicos
 
-// usamos função anônima para ser o valor do atributo onclick para através dela após o clique a gente chamar a função playSom
     tecla.onclick = function () { 
         playSom(idAudio);
     }
 
-    contador = contador + 1;
+    tecla.onkeydown = function (evento) { // nome evento escolhido
+        console.log(evento.code == 'Space')
+        // se (dada condição for verdadeira) faça {isso}
+        if (evento.code === 'Space') {
+        tecla.classList.add('ativa');
+        }
+    }
+    tecla.onkeyup = function () {
+        tecla.classList.remove('ativa');
+    }
+
 }
 
-// toda vez que colocamos () logo após a função, ela executa automaticamente sem o usuário interagir com ela
+
 
 
