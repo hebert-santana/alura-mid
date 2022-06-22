@@ -14,7 +14,6 @@ Colocando em prática o aprendizado em Javascript, com um projeto de uma página
 <https://hebert-santana.github.io/alura-grid/>
 
 ## Autor
-~~~ javascript
-by Hebert Santana
-~~~
+
+[<img src="https://avatars.githubusercontent.com/u/102166830?v=4" width=115><br><sub>Hebert Santana</sub>](https://github.com/hebert-santana)
 
